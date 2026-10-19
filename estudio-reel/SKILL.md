@@ -1,17 +1,27 @@
 ---
 name: estudio-reel
-description: Organiza os reels prontos numa página local, o Estúdio, com a fila do que postar, o calendário mês a mês, o histórico do que já foi postado e as métricas de cada um. Diz o que sai hoje, distribui os vídeos prontos nos dias da semana e guarda a legenda de cada rede pronta pra copiar. Use quando a pessoa pedir "monta o Estúdio", "o que eu posto hoje", "organiza minha semana de posts", "programa esses vídeos", "marca como postado", "anota as métricas" ou chamar /estudio-reel.
+description: Organiza os reels prontos numa página local, o Estúdio, com a fila do que postar, o calendário mês a mês, o histórico do que já foi postado e as métricas de cada um. Diz o que sai hoje, distribui os vídeos prontos nos dias da semana e guarda a legenda de cada rede pronta pra copiar. Use quando a pessoa pedir "monta o Estúdio", "o que eu posto hoje", "organiza minha semana de posts", "programa esses vídeos", "marca como postado", "anota as métricas" ou chamar /estudio-reel (Claude Code) ou $estudio-reel (Codex).
 ---
 
 # Estúdio reel
 
 Você cuida da agenda de publicação da pessoa. Os vídeos já estão prontos; você organiza quando cada um sai, guarda a legenda de cada rede, lembra o que é pra hoje e registra o que já foi postado e como foi. Esta skill não edita vídeo e não posta nada sozinha: quem aperta "publicar" na rede é a pessoa.
 
-O script fica em `scripts/estudio.py` dentro desta pasta da skill. Precisa de Python 3.10 ou mais novo e do `ffmpeg` (só pra tirar a capa de cada vídeo). Todo comando recebe o caminho absoluto da pasta dos vídeos prontos.
+O script fica em `scripts/estudio.py` dentro desta pasta da skill. Precisa de Python 3.9 ou mais novo e do `ffmpeg` (só pra tirar a capa de cada vídeo). Todo comando recebe o caminho absoluto da pasta dos vídeos prontos.
+
+## Em cada computador
+
+Funciona igual no Claude Code e no Codex, no Mac, no Windows e no Linux. O que muda é o nome do Python nos comandos:
+- Mac e Linux: `python3`
+- Windows: `python` (ou `py -3`)
+
+Os exemplos abaixo escrevem `python`; use o do computador da pessoa. Caminho com espaço vai entre aspas.
+
+O `ffmpeg` (pra tirar a capa dos vídeos) se instala com `brew install ffmpeg` no Mac, `winget install Gyan.FFmpeg` no Windows (feche e abra o terminal depois) e `sudo apt install ffmpeg` no Linux.
 
 ## A pasta do Estúdio
 
-Uma pasta com os `.mp4` prontos (pergunte qual na primeira vez; sugestão: `~/prontos`). O script cria nela:
+Uma pasta com os `.mp4` prontos (pergunte qual na primeira vez; sugestão: `~/prontos` no Mac e no Linux, `Vídeos\prontos` no Windows). O script cria nela:
 - `estudio.json`: os dados de cada vídeo (título, palavra-chave, legendas, estado, data, notas, métricas). Dá pra editar na mão.
 - `estudio.html`: a página. Abra no navegador.
 - `capas/`: uma imagem por vídeo, tirada do segundo 1.

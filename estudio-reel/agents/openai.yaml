@@ -1,0 +1,4 @@
+interface:
+  display_name: "Estúdio reel"
+  short_description: "Fila, calendário e histórico dos reels prontos"
+  default_prompt: "Use $estudio-reel pra montar o Estúdio com os vídeos da pasta (caminho) e me dizer o que eu posto hoje."

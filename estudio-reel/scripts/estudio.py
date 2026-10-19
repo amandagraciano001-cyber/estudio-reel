@@ -20,6 +20,7 @@ cartão dá pra escolher a data e marcar como postado direto na página (fica sa
 "Baixar estudio.json" devolve o arquivo com essas mudanças pra você trocar na pasta. Nada sai do seu computador.
 """
 import argparse
+import sys
 import html
 import json
 import os
@@ -109,11 +110,11 @@ pinta();
 
 def carregar(pasta):
     p = os.path.join(pasta, "estudio.json")
-    return json.load(open(p)) if os.path.exists(p) else {"itens": []}
+    return json.load(open(p, encoding="utf-8")) if os.path.exists(p) else {"itens": []}
 
 
 def salvar(pasta, dados):
-    json.dump(dados, open(os.path.join(pasta, "estudio.json"), "w"), ensure_ascii=False, indent=1)
+    json.dump(dados, open(os.path.join(pasta, "estudio.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 
 
 def capa(pasta, arquivo):
@@ -319,4 +320,6 @@ def main():
 
 
 if __name__ == "__main__":
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     main()
